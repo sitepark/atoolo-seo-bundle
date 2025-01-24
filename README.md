@@ -12,6 +12,6 @@ This bundle contains features for search engine optimization. Included are:
 
 -   Controller for providing the [Sitemap-XML](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview)
 
-Weiter Informationen:
+Further information:
 
 -   [Bundle Documentation](https://sitepark.github.io/atoolo-docs/develop/bundles/seo/)
