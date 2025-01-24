@@ -142,8 +142,8 @@ class SitemapXmlControllerTest extends TestCase
                         'alternate',
                         'https://example.com/en/a',
                         'en',
-                    )
-                ]
+                    ),
+                ],
             ),
             new UrlEntry(
                 '/b',
@@ -155,8 +155,8 @@ class SitemapXmlControllerTest extends TestCase
                         'alternate',
                         'https://example.com/en/b',
                         'en',
-                    )
-                ]
+                    ),
+                ],
             ),
         ]);
 

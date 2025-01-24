@@ -44,7 +44,7 @@ class SitemapLoaderTest extends TestCase
         $channel = $this->createChannel('de_DE', ['en_US', 'it_IT']);
         $loader = new SitemapLoader($search, $channel, 1000);
 
-        $request =new IndexRequest(['12', '13'], ['14', '15']);
+        $request = new IndexRequest(['12', '13'], ['14', '15']);
         $indexes = $loader->loadIndex($request);
 
         $expected = [
@@ -76,7 +76,7 @@ class SitemapLoaderTest extends TestCase
         $channel = $this->createChannel('de_DE', ['en_US', 'it_IT']);
         $loader = new SitemapLoader($search, $channel, 1000);
 
-        $request =new IndexRequest([], ['14', '15']);
+        $request = new IndexRequest([], ['14', '15']);
         $indexes = $loader->loadIndex($request);
 
         $expected = [
@@ -111,7 +111,7 @@ class SitemapLoaderTest extends TestCase
         $channel = $this->createChannel('de_DE', ['en_US']);
         $loader = new SitemapLoader($search, $channel, 1000);
 
-        $request =new EntriesRequest(1, ['12', '13'], ['14', '15']);
+        $request = new EntriesRequest(1, ['12', '13'], ['14', '15']);
         $indexes = $loader->loadIndexEntries($request);
 
         $expected = [
@@ -180,7 +180,7 @@ class SitemapLoaderTest extends TestCase
             name: '',
             objectType: '',
             lang: ResourceLanguage::default(),
-            data: new DataBag([])
+            data: new DataBag([]),
         );
     }
     /**
