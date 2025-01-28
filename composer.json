@@ -14,6 +14,7 @@
         "ext-xmlwriter": "*",
         "atoolo/resource-bundle": "^1.3",
         "atoolo/search-bundle": "dev-main",
+        "atoolo/rewrite-bundle": "dev-main",
         "symfony/config": "^6.3 || ^7.0",
         "symfony/dependency-injection": "^6.3 || ^7.0",
         "symfony/framework-bundle": "^6.3 || ^7.1",
