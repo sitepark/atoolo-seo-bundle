@@ -55,7 +55,7 @@ class SitemapLoaderTest extends TestCase
         $search->method('search')
             ->willReturn($searchResult);
         $channel = $this->createChannel('de_DE', ['en_US', 'it_IT']);
-        $loader = new SitemapLoader($search, $channel, $this->rewriter,1000);
+        $loader = new SitemapLoader($search, $channel, $this->rewriter, 1000);
 
         $request = new IndexRequest(['12', '13'], ['14', '15']);
         $indexes = $loader->loadIndex($request);
