@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Atoolo\Seo\Service;
 
 use Atoolo\Resource\ResourceChannel;
+use Atoolo\Rewrite\Dto\UrlRewriteOptions;
+use Atoolo\Rewrite\Dto\UrlRewriteType;
+use Atoolo\Rewrite\Service\UrlRewriter;
 use Atoolo\Search\Dto\Search\Query\Filter\ContentTypeFilter;
 use Atoolo\Search\Dto\Search\Query\Filter\Filter;
 use Atoolo\Search\Dto\Search\Query\Filter\NotFilter;
@@ -32,6 +35,8 @@ class SitemapLoader
         private readonly Search $search,
         #[Autowire(service: 'atoolo_resource.resource_channel')]
         private readonly ResourceChannel $channel,
+        #[Autowire(service: 'atoolo_seo.sitemap.url_rewriter')]
+        private readonly UrlRewriter $urlRewriter,
         #[Autowire(param: 'atoolo_seo.sitemap.max_urls_per_sitemap')]
         int $maxUrlsPerSitemap,
     ) {
@@ -152,7 +157,9 @@ class SitemapLoader
     private function buildUrl(string $locale, string $path): string
     {
         $code = $locale === '' ? '' : Locale::getPrimaryLanguage($locale);
-        return ($code === '' ? '' : ('/' . $code)) . $path;
+        $url = ($code === '' ? '' : ('/' . $code)) . $path;
+
+        return $this->urlRewriter->rewrite(UrlRewriteType::LINK, $url, UrlRewriteOptions::none());
     }
 
     /**
