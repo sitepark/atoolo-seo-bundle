@@ -9,6 +9,9 @@ use Atoolo\Resource\Resource;
 use Atoolo\Resource\ResourceChannel;
 use Atoolo\Resource\ResourceLanguage;
 use Atoolo\Resource\ResourceTenant;
+use Atoolo\Rewrite\Dto\UrlRewriteOptions;
+use Atoolo\Rewrite\Dto\UrlRewriteType;
+use Atoolo\Rewrite\Service\UrlRewriter;
 use Atoolo\Search\Dto\Search\Result\SearchResult;
 use Atoolo\Search\Search;
 use Atoolo\Seo\Dto\Sitemap\ChangeFreq;
@@ -25,6 +28,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(SitemapLoader::class)]
 class SitemapLoaderTest extends TestCase
 {
+    private UrlRewriter $rewriter;
+
+    /**
+     * @throws Exception
+     */
+    public function setUp(): void
+    {
+        $this->rewriter = $this->createMock(UrlRewriter::class);
+    }
+
     /**
      * @throws Exception
      */
@@ -42,7 +55,7 @@ class SitemapLoaderTest extends TestCase
         $search->method('search')
             ->willReturn($searchResult);
         $channel = $this->createChannel('de_DE', ['en_US', 'it_IT']);
-        $loader = new SitemapLoader($search, $channel, 1000);
+        $loader = new SitemapLoader($search, $channel, $this->rewriter,1000);
 
         $request = new IndexRequest(['12', '13'], ['14', '15']);
         $indexes = $loader->loadIndex($request);
@@ -74,7 +87,7 @@ class SitemapLoaderTest extends TestCase
         $search->method('search')
             ->willReturn($searchResult);
         $channel = $this->createChannel('de_DE', ['en_US', 'it_IT']);
-        $loader = new SitemapLoader($search, $channel, 1000);
+        $loader = new SitemapLoader($search, $channel, $this->rewriter, 1000);
 
         $request = new IndexRequest([], ['14', '15']);
         $indexes = $loader->loadIndex($request);
@@ -109,7 +122,10 @@ class SitemapLoaderTest extends TestCase
         $search->method('search')
             ->willReturn($searchResult);
         $channel = $this->createChannel('de_DE', ['en_US']);
-        $loader = new SitemapLoader($search, $channel, 1000);
+        $this->rewriter->expects($this->exactly(8))
+            ->method('rewrite')
+            ->willReturnCallback(fn(UrlRewriteType $type, string $url, UrlRewriteOptions $options) => $url);
+        $loader = new SitemapLoader($search, $channel, $this->rewriter, 1000);
 
         $request = new EntriesRequest(1, ['12', '13'], ['14', '15']);
         $indexes = $loader->loadIndexEntries($request);

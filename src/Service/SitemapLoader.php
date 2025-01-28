@@ -159,7 +159,7 @@ class SitemapLoader
         $code = $locale === '' ? '' : Locale::getPrimaryLanguage($locale);
         $url = ($code === '' ? '' : ('/' . $code)) . $path;
 
-        return $this->urlRewriter->rewrite(UrlRewriteType::LINK, $url ,UrlRewriteOptions::none());
+        return $this->urlRewriter->rewrite(UrlRewriteType::LINK, $url, UrlRewriteOptions::none());
     }
 
     /**
