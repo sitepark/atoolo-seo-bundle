@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/sitepark/atoolo-form-bundle/graph/badge.svg?token=bPXRMUE4tn)](https://codecov.io/gh/sitepark/atoolo-form-bundle)
+[![codecov](https://codecov.io/gh/sitepark/atoolo-seo-bundle/graph/badge.svg?token=0acTkVu6xq)](https://codecov.io/gh/sitepark/atoolo-seo-bundle)
 ![phpstan](https://img.shields.io/badge/PHPStan-level%209-brightgreen)
 [![php](https://img.shields.io/badge/PHP-8.1-yellow)](## "is no longer checked automatically")
 ![php](https://img.shields.io/badge/PHP-8.2-blue)
