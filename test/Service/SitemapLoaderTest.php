@@ -50,6 +50,7 @@ class SitemapLoaderTest extends TestCase
             offset: 0,
             results: [],
             facetGroups: [],
+            spellcheck: null,
             queryTime: 0,
         );
         $search->method('search')
@@ -82,6 +83,7 @@ class SitemapLoaderTest extends TestCase
             offset: 0,
             results: [],
             facetGroups: [],
+            spellcheck: null,
             queryTime: 0,
         );
         $search->method('search')
@@ -117,6 +119,7 @@ class SitemapLoaderTest extends TestCase
                 $this->createResource('/b'),
             ],
             facetGroups: [],
+            spellcheck: null,
             queryTime: 0,
         );
         $search->method('search')
