@@ -220,6 +220,7 @@ class SitemapLoaderTest extends TestCase
             configDir: '',
             searchIndex: '',
             translationLocales: $translationLocales,
+            attributes: new DataBag([]),
             tenant: $this->createStub(ResourceTenant::class),
         );
     }
