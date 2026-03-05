@@ -1,5 +1,5 @@
 parameters:
-  atoolo_seo.sitemap.max_urls_per_sitemap: 10000
+  atoolo_seo.sitemap.max_urls_per_sitemap: 2000
 
 services:
 
