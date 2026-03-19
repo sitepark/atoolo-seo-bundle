@@ -202,21 +202,9 @@ class SitemapLoaderTest extends TestCase
      */
     private function createChannel(string $locale, array $translationLocales): ResourceChannel
     {
-        return new ResourceChannel(
-            id: '',
-            name: '',
-            anchor: '',
-            serverName: '',
-            isPreview: false,
-            nature: '',
-            locale: $locale,
-            baseDir: '',
-            resourceDir: '',
-            configDir: '',
-            searchIndex: '',
-            translationLocales: $translationLocales,
-            attributes: new DataBag([]),
-            tenant: $this->createStub(ResourceTenant::class),
-        );
+        return ResourceChannel::create([
+            'locale' => $locale,
+            'translationLocales' => $translationLocales,
+        ]);
     }
 }
