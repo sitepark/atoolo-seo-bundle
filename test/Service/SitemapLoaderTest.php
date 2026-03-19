@@ -193,14 +193,9 @@ class SitemapLoaderTest extends TestCase
 
     private function createResource(string $location): Resource
     {
-        return new Resource(
-            location: $location,
-            id: '',
-            name: '',
-            objectType: '',
-            lang: ResourceLanguage::default(),
-            data: new DataBag([]),
-        );
+        return Resource::create([
+            'url' => $location,
+        ]);
     }
     /**
      * @throws Exception
