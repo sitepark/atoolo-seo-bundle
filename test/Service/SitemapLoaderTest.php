@@ -4,11 +4,8 @@ declare(strict_types=1);
 
 namespace Atoolo\Seo\Test\Service;
 
-use Atoolo\Resource\DataBag;
 use Atoolo\Resource\Resource;
 use Atoolo\Resource\ResourceChannel;
-use Atoolo\Resource\ResourceLanguage;
-use Atoolo\Resource\ResourceTenant;
 use Atoolo\Rewrite\Dto\UrlRewriteOptions;
 use Atoolo\Rewrite\Dto\UrlRewriteType;
 use Atoolo\Rewrite\Service\UrlRewriter;
@@ -193,35 +190,18 @@ class SitemapLoaderTest extends TestCase
 
     private function createResource(string $location): Resource
     {
-        return new Resource(
-            location: $location,
-            id: '',
-            name: '',
-            objectType: '',
-            lang: ResourceLanguage::default(),
-            data: new DataBag([]),
-        );
+        return Resource::create([
+            'url' => $location,
+        ]);
     }
     /**
      * @throws Exception
      */
     private function createChannel(string $locale, array $translationLocales): ResourceChannel
     {
-        return new ResourceChannel(
-            id: '',
-            name: '',
-            anchor: '',
-            serverName: '',
-            isPreview: false,
-            nature: '',
-            locale: $locale,
-            baseDir: '',
-            resourceDir: '',
-            configDir: '',
-            searchIndex: '',
-            translationLocales: $translationLocales,
-            attributes: new DataBag([]),
-            tenant: $this->createStub(ResourceTenant::class),
-        );
+        return ResourceChannel::create([
+            'locale' => $locale,
+            'translationLocales' => $translationLocales,
+        ]);
     }
 }
