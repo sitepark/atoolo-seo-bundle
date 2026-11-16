@@ -94,7 +94,7 @@ class SitemapLoader
         foreach ($result->results as $item) {
             foreach ($locales as $locale) {
                 $entries[] = $this->buildEntry(
-                    $item->location,
+                    $item->url,
                     $locale,
                     $locales,
                 );
