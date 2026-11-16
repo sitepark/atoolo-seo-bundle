@@ -188,10 +188,12 @@ class SitemapLoaderTest extends TestCase
         $this->assertEquals($expected, $indexes, 'unexpected index entries');
     }
 
-    private function createResource(string $location): Resource
+    private function createResource(string $url): Resource
     {
         return Resource::create([
-            'url' => $location,
+            // id-based location differs from the public url
+            'location' => '/000/000/001.php',
+            'url' => $url,
         ]);
     }
     /**
